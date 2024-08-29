@@ -15,7 +15,7 @@ if sh -c ": >/dev/tty" >/dev/null 2>/dev/null; then
 	INTERACTIVE="--interactive --tty"
 fi
 
-readonly VIVADO_PATH="/opt/Xilinx/Vivado/2023.2"
+readonly VIVADO_PATH="/opt/Xilinx/Vivado/2020.1"
 
 docker run \
   ${INTERACTIVE} \
@@ -24,8 +24,9 @@ docker run \
   -v "${PWD}:/work:rw" \
   -e DISPLAY="${DISPLAY}" \
   -e HOME="/work" \
+  -e VIVADO_PATH="${VIVADO_PATH}" \
   --net=host \
-  xilinx-vivado:latest \
+  xilinx-vivado:latest  \
   /bin/bash -c \
     "env \
       LD_LIBRARY_PATH=${VIVADO_PATH}/lib/lnx64.o \

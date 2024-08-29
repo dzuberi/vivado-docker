@@ -3,7 +3,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-FROM ubuntu:22.04
+FROM ubuntu:18.04
 
 ARG INSTALL_TARGET_DIR
 ARG XSETUP_DIR
@@ -91,7 +91,7 @@ RUN cd "$XILINX_INSTALL_LOCATION/tmp/`basename --suffix=.tar.gz $HOST_TOOL_ARCHI
     &&./xsetup --config $XILINX_INSTALL_LOCATION/tmp/install_config.txt \
 		--batch Install \
 		--location /opt/Xilinx \
-		--agree XilinxEULA,3rdPartyEULA \
+		--agree XilinxEULA,3rdPartyEULA,WebTalkTerms \
 	&& rm -fr $XILINX_INSTALL_LOCATION/tmp/*
 
 VOLUME /src
